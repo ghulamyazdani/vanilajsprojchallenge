@@ -34,6 +34,14 @@ function handleSubmit(event) {
 }
 
 function signup(data) {
-  localStorage.setItem("user", JSON.stringify(data));
+  let userData = JSON.parse(localStorage.getItem("usersData")) || [];
+  if (userData.lenght > 0) {
+    userData = userData.filter((user) => {
+      return user.email !== data.email || user.username !== data.username;
+    });
+  }
+  userData.push(data);
+  localStorage.setItem("usersData", JSON.stringify(userData));
+  //   localStorage.setItem("user", JSON.stringify(data));
   window.location.href = "login.html";
 }

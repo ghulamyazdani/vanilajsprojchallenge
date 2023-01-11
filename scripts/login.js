@@ -26,22 +26,54 @@ function handleSubmit(event) {
 }
 
 function login(data, type) {
-  const user = JSON.parse(localStorage.getItem("user"));
-  console.log(user);
+  const usersData = JSON.parse(localStorage.getItem("usersData")) || [];
+  console.log(usersData);
   if (type === "email") {
-    if (user.email === data.email && user.password === data.password) {
-      window.location.href = "index.html";
+    // if (user.email === data.email && user.password === data.password) {
+    //   window.location.href = "index.html";
+    // } else {
+    //   finalValidation.innerHTML = `Invalid Email or Password`;
+    //   setTimeout(() => {
+    //     finalValidation.innerHTML = ``;
+    //   }, 2000);
+    // }
+    // userData.array.forEach(element => {
+    //     element.email === data.email && element.password === data.password ? window.location.href = "index.html" : finalValidation.innerHTML = `Invalid Email or Password`;
+    // });
+    // if (userData.find((user) => user.email === data.email)) {
+
+    // }
+    const tempData = usersData.find((user) => user.email === data.email);
+    if (tempData !== undefined) {
+      if (tempData.password === data.password) {
+        window.location.href = "index.html";
+        localStorage.setItem("user", JSON.stringify(tempData));
+      } else {
+        finalValidation.innerHTML = `Password is Incorrect`;
+        setTimeout(() => {
+          finalValidation.innerHTML = ``;
+        }, 2000);
+      }
     } else {
-      finalValidation.innerHTML = `Invalid Email or Password`;
+      finalValidation.innerHTML = `Email does not exist in database`;
       setTimeout(() => {
         finalValidation.innerHTML = ``;
       }, 2000);
     }
   } else {
-    if (user.username === data.username && user.password === data.password) {
-      window.location.href = "index.html";
+    const tempData = usersData.find((user) => user.username === data.username);
+    if (tempData !== undefined) {
+      if (tempData.password === data.password) {
+        window.location.href = "index.html";
+        localStorage.setItem("user", JSON.stringify(tempData));
+      } else {
+        finalValidation.innerHTML = `Password is Incorrect`;
+        setTimeout(() => {
+          finalValidation.innerHTML = ``;
+        }, 2000);
+      }
     } else {
-      finalValidation.innerHTML = `Invalid Username or Password`;
+      finalValidation.innerHTML = `Username does not exist in database`;
       setTimeout(() => {
         finalValidation.innerHTML = ``;
       }, 2000);
