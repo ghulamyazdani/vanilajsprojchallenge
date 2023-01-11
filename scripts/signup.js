@@ -27,10 +27,10 @@ function handleSubmit(event) {
     }
   } else {
     finalValidation.innerHTML = `Password and Confirm Password must be same`;
-    setTimeout(() => {
-      finalValidation.innerHTML = ``;
-    }, 3000);
   }
+  setTimeout(() => {
+    finalValidation.innerHTML = ``;
+  }, 2000);
 }
 
 function signup(data) {
