@@ -1,6 +1,7 @@
 const user = JSON.parse(localStorage.getItem("user"));
 
 window.onload = () => {
+  document.getElementById("loading").style.display = "none";
   if (
     user &&
     !window.location.href.includes("index.html") &&

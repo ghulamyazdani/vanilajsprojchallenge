@@ -39,7 +39,7 @@
       </div>
       <div class="card login-form p-3 w-25">
         <div class="card-body">
-          <h3 class="card-title text-center">Signup</h3>
+          <h3 class="card-title text-center">SignUp to {"-"}</h3>
           <div class="card-text">
             <form id="signupForm">
               <div class="form-group required">
@@ -92,9 +92,12 @@
                 <div id="confirm-validation" class="text-danger"></div>
               </div>
               <div id="final-validation" class="text-danger"></div>
-              <button id="signup" type="submit" class="btn btn-dark">
-                Sign up
-              </button>
+              <div class="d-flex align-items-end">
+                <button id="signup" type="submit" class="btn btn-dark">
+                  Sign up
+                </button>
+                <a class="mb-1 ml-1" href="/login.html">or login</a>
+              </div>
             </form>
           </div>
         </div>
